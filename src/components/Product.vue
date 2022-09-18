@@ -34,43 +34,19 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     name: "ProductView",
     data: () => ({
         bpm: 1,
-        products: [
-            {
-                title: 'audi',
-                img: 'audi.jpg',
-                price: 100
-            },
-            {
-                title: 'benz',
-                img: 'benz.jpg',
-                price: 200
-            },
-            {
-                title: 'bmw',
-                img: 'bmw.jpg',
-                price: 300
-            },
-            {
-                title: 'pride',
-                img: 'pride.jpg',
-                price: 400
-            },
-            {
-                title: 'samand',
-                img: 'samand.jpg',
-                price: 500
-            },
-            {
-                title: 'peykan',
-                img: 'peykan.jpg',
-                price: 600
-            }
-        ]
+
     }),
+    computed: {
+        ...mapState({
+            products: state => state.products
+        })
+    },
+
     methods: {
         decrement() {
             this.bpm--

@@ -35,12 +35,7 @@
             <v-btn dark class="px-8" color="green" rounded>SeeAll</v-btn>
           </v-toolbar>
           <Product />
-          <v-card flat color="#e2f2e5" class="rounded-xl mt-8">
-            <v-toolbar flat color="transparent" class="mb-4">
-              <v-toolbar-title>Popular bundle pack</v-toolbar-title>
-            </v-toolbar>
-            <Pack />
-          </v-card>
+
         </v-col>
       </v-row>
     </v-container>
@@ -52,13 +47,12 @@ import Navbar from '@/components/Navbar.vue';
 import Category from "@/components/Category.vue"
 import Product from "@/components/Product.vue"
 import Footer from "@/components/Footer.vue"
-import Pack from "@/components/Pack.vue"
 export default {
   name: "HomeView",
   data: () => ({
     toggle_exclusive: 1,
   }),
-  components: { Navbar, Category, Product, Footer, Pack }
+  components: { Navbar, Category, Product, Footer }
 }
 </script>
 <style>

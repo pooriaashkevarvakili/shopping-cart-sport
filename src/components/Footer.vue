@@ -2,7 +2,6 @@
     <v-footer dark padless class="mt-2">
         <v-card flat tile class="black white--text py-12 px-5" width="100%">
             <v-row>
-
                 <v-col cols="12" xs="12" sm="6" md="4" class="pa-16">
                     <v-toolbar color="transparent" flat>
                         <v-badge color="#d5f0db" dot>
@@ -25,65 +24,28 @@
                     </v-card-text>
                 </v-col>
                 <v-col cols="12" xs="12" sm="6" md='2'>
-                    <v-card-text class="white--text pt-0">
-                        <h3>About</h3>
-                    </v-card-text>
-                    <v-card-text class="grey--text">
-                        <h3>how it work</h3>
-                    </v-card-text>
-                    <v-card-text class="grey--text mt-n4">
-                        <h3>Our params</h3>
-                    </v-card-text>
-                    <v-card-text class="grey--text mt-n4">
-                        <h3>Promotions</h3>
-                    </v-card-text>
-                    <v-card-text class="white--text pt-0">
-                        <h3>Refer A friend</h3>
+                    <v-card-text v-for="item in about" :key="item.id" class="white--text pt-0">
+                        <h3>{{item.title}}</h3>
                     </v-card-text>
                 </v-col>
                 <v-col cols="12" xs="12" sm="6" md='2'>
-                    <v-card-text class="white--text pt-0">
-                        <h3>Delivery</h3>
-                    </v-card-text>
-                    <v-card-text class="grey--text">
-                        <h3>Cost on Delivery</h3>
-                    </v-card-text>
-                    <v-card-text class="grey--text mt-n4">
-                        <h3>Payment methods</h3>
-                    </v-card-text>
-                    <v-card-text class="grey--text mt-n4">
-                        <h3>Delivery astus</h3>
-                    </v-card-text>
-                    <v-card-text class="white--text pt-0">
-                        <h3>Returns</h3>
+                    <v-card-text v-for="item in delivery" :key="item.id" class="white--text pt-0">
+                        <h3>{{item.title}}</h3>
                     </v-card-text>
                 </v-col>
                 <v-col cols="12" xs="12" sm="6" md='2'>
-                    <v-card-text class="white--text pt-0">
-                        <h3>About</h3>
-                    </v-card-text>
-                    <v-card-text class="grey--text">
-                        <h3>pooriavakili</h3>
-                    </v-card-text>
-                    <v-card-text class="grey--text mt-n4">
-                        <h3>tehranpars</h3>
-                    </v-card-text>
-                    <v-card-text class="grey--text mt-n4">
-                        <h3>pooriavakili09</h3>
-                    </v-card-text>
-                    <v-card-text class="white--text pt-0">
-                        <h3>09376720694</h3>
+                    <v-card-text v-for="item in street" :key="item.id" class="white--text pt-0">
+                        <h3>{{item.title}}</h3>
                     </v-card-text>
                 </v-col>
             </v-row>
         </v-card>
     </v-footer>
 </template>
-
 <script>
+import { mapState } from 'vuex'
 export default {
     name: "FooterView",
-
     data: () => ({
         icons: [
             'fab fa-apple',
@@ -92,9 +54,15 @@ export default {
             'fab fa-twitter',
         ]
     }),
+    computed: {
+        ...mapState({
+            about: state => state.about,
+            delivery: state => state.delivery,
+            street: state => state.street
+        })
+    }
 }
 </script>
-
 <style>
 
 </style>

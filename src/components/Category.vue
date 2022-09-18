@@ -16,13 +16,9 @@
                                                 <div class="mt-2">{{item.title}}</div>
                                             </div>
                                         </v-list-item-content>
-
-
-
                                     </v-list-item>
                                 </v-col>
                             </v-row>
-
                         </v-card>
                     </v-item>
                 </v-col>
@@ -32,36 +28,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
     name: 'CategoryView',
-    data: () => ({
-        category: [
-            {
-                title: 'audi',
-                img: 'audi.jpg'
-            },
-            {
-                title: 'benz',
-                img: 'benz.jpg'
-            },
-            {
-                title: 'bmw',
-                img: 'bmw.jpg'
-            },
-            {
-                title: 'pride',
-                img: 'pride.jpg'
-            },
-            {
-                title: 'samand',
-                img: 'samand.jpg'
-            },
-            {
-                title: 'peykan',
-                img: 'peykan.jpg'
-            }
-        ]
-    }),
+    computed: {
+        ...mapState({
+            category: state => state.category
+        })
+    }
 }
 </script>
 
