@@ -24,9 +24,8 @@
                         <v-icon color="green" @click="increment">mdi-plus </v-icon>
                     </v-btn>
                     <v-spacer></v-spacer>
-                    <v-btn class="mx-2 mt-n3" fab dark small color="green">
-                        <v-icon dark>mdi-shopping</v-icon>
-                    </v-btn>
+                    <Modal />
+
                 </v-card-actions>
             </v-card>
         </v-col>
@@ -35,8 +34,10 @@
 
 <script>
 import { mapState } from 'vuex'
+import Modal from "./Modal.vue"
 export default {
     name: "ProductView",
+    components: { Modal },
     data: () => ({
         bpm: 1,
 
