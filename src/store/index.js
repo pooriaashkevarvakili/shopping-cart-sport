@@ -129,7 +129,8 @@ export default new Vuex.Store({
         img: 'divistoseven.jpg',
         price: 600
       }
-    ]
+    ],
+    cart: []
   },
   getters: {
     products: state => state.products
@@ -137,11 +138,17 @@ export default new Vuex.Store({
   mutations: {
     productsAdd(state, products) {
       state.products = products
+    },
+    addToCart(state, item) {
+      state.cart.push({ ...item, qty: 1 })
     }
   },
   actions: {
     productsAdd({ commit }) {
       commit('productsAdd')
+    },
+    addToCart({ commit }, item) {
+      commit('addToCart', item)
     }
   },
   modules: {

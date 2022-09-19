@@ -1,32 +1,24 @@
 <template>
     <v-row justify="center" class="px-16 space">
-        <v-col cols="12" xs="12" sm="6" md="4" v-for="(product,i) in products" :key="i">
+        <v-col cols="12" xs="12" sm="6" md="4" v-for="(item,i) in products" :key="i">
             <v-card class="mx-auto rounded-xl" max-width="300" flat outlined>
                 <div align="center" justify="center">
-                    <v-img contain max-width="300" max-height="300" :src="product.img"></v-img>
+                    <v-img contain max-width="300" max-height="300" :src="item.img"></v-img>
                 </div>
                 <v-card-title>
                     <p>
-                        {{product.title}}
+                        {{item.title}}
                     </p>
                 </v-card-title>
                 <v-card-title class="mt-n4">
                     <p>
-                        {{product.price}}
+                        {{item.price}}
                     </p>
-                </v-card-title>
-                <v-card-actions class="mw-2 mt-n4">
-                    <v-btn outlined class="mt-n2 add">
-                        <v-icon color="green" @click="decrement">mdi-minus</v-icon>
-                    </v-btn>
-                    <strong class="mx-2" v-text="bpm"></strong>
-                    <v-btn outlined class="mt-n2 add">
-                        <v-icon color="green" @click="increment">mdi-plus </v-icon>
-                    </v-btn>
                     <v-spacer></v-spacer>
-                    <Modal />
-
-                </v-card-actions>
+                    <v-btn @click.prevent="goCart" class="mx-2 mt-n3" fab small color="green" dark>
+                        <v-icon dark>mdi-shopping</v-icon>
+                    </v-btn>
+                </v-card-title>
             </v-card>
         </v-col>
     </v-row>
@@ -34,27 +26,18 @@
 
 <script>
 import { mapState } from 'vuex'
-import Modal from "./Modal.vue"
 export default {
     name: "ProductView",
-    components: { Modal },
-    data: () => ({
-        bpm: 1,
-
-    }),
+    components: {},
     computed: {
         ...mapState({
             products: state => state.products
         })
     },
-
     methods: {
-        decrement() {
-            this.bpm--
+        goCart() {
+            this.$router.push('/cart')
         },
-        increment() {
-            this.bpm++
-        }
     }
 }
 </script>

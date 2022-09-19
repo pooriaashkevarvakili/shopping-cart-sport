@@ -10,7 +10,7 @@
 
         </v-badge>
         <v-toolbar-title class="ml-4">
-            <span class="green--text">shoppingcart</span>
+            <span style="cursor:pointer" @click="addToHome" class="green--text">shoppingcart</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-badge color="#ff6d59" overlap class="mr-2 mt-1" content="2">
@@ -35,7 +35,12 @@
 
 <script>
 export default {
-    name: 'NavbarView'
+    name: 'NavbarView',
+    methods: {
+        addToHome() {
+            this.$router.push('/')
+        }
+    }
 }
 </script>
 
