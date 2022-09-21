@@ -130,7 +130,8 @@ export default new Vuex.Store({
         price: 600
       }
     ],
-    cart: []
+    cart: [],
+
   },
   getters: {
     products: state => state.products
@@ -141,7 +142,8 @@ export default new Vuex.Store({
     },
     addToCart(state, item) {
       state.cart.push({ ...item, qty: 1 })
-    }
+    },
+
   },
   actions: {
     productsAdd({ commit }) {
@@ -149,7 +151,8 @@ export default new Vuex.Store({
     },
     addToCart({ commit }, item) {
       commit('addToCart', item)
-    }
+    },
+
   },
   modules: {
   }

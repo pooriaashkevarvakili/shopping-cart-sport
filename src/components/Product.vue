@@ -15,7 +15,7 @@
                         {{item.price}}
                     </p>
                     <v-spacer></v-spacer>
-                    <v-btn @click.prevent="goCart" class="mx-2 mt-n3" fab small color="green" dark>
+                    <v-btn @click.prevent="goCart(item)" class="mx-2 mt-n3" fab small color="green" dark>
                         <v-icon dark>mdi-shopping</v-icon>
                     </v-btn>
                 </v-card-title>
@@ -35,8 +35,8 @@ export default {
         })
     },
     methods: {
-        goCart() {
-            this.$router.push('/cart')
+        goCart(item) {
+            this.$router.push({ name: 'cart', params: item })
         },
     }
 }
