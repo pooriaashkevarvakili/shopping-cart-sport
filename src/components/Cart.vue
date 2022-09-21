@@ -21,8 +21,8 @@
                         <v-btn outlined class="mt-n2 add">
                             <v-icon @click.prevent="addQty(item.id)" color="green">mdi-minus</v-icon>
                         </v-btn>
-                        {{item.qty}}
-                        <strong class="mx-2"></strong>
+
+                        <strong class="mx-2">{{cartItemCount}}</strong>
                         <v-btn outlined class="mt-n2 add">
                             <v-icon @click.prevent="reduceQty(item.id)" color="green">mdi-plus </v-icon>
                         </v-btn>
@@ -42,7 +42,7 @@
     </div>
 </template>
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 import Navbar from './Navbar.vue';
 import Footer from "./Footer.vue"
 export default {
@@ -54,6 +54,12 @@ export default {
 
 
     },
+    computed: {
+        ...mapState({
+            cartItemCount: state => state.cartItemCount
+        })
+    },
+
     components: { Navbar, Footer },
     methods: {
         ...mapActions(["addQty", "reduceQty"]),

@@ -131,6 +131,7 @@ export default new Vuex.Store({
       }
     ],
     cart: [],
+    cartItemCount: 0
 
   },
   getters: {
@@ -141,8 +142,20 @@ export default new Vuex.Store({
       state.products = products
     },
     addToCart(state, item) {
-      state.cart.push({ ...item, qty: 1 })
+      const addItem = state.cart.find((product) => product.id === item.id)
+      if (addItem) {
+        addItem.qty++
+      } else {
+        state.cart.push({ ...item, qty: 1 })
+
+      }
     },
+    reduceQty(state) {
+      state.cartItemCount++
+    },
+    addQty(state) {
+      state.cartItemCount--
+    }
 
   },
   actions: {
@@ -152,6 +165,12 @@ export default new Vuex.Store({
     addToCart({ commit }, item) {
       commit('addToCart', item)
     },
+    reduceQty({ commit }) {
+      commit('reduceQty')
+    },
+    addQty({ commit }) {
+      commit('addQty')
+    }
 
   },
   modules: {
