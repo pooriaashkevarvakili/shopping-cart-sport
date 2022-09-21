@@ -18,7 +18,7 @@
                 <v-icon x-small color='#ff6d59'>far fa-heart</v-icon>
             </v-avatar>
         </v-badge>
-        <v-badge color="#41ab55" overlap class="mr-2 mt-1" content="3">
+        <v-badge color="#41ab55" overlap class="mr-2 mt-1" :content="cartItemCount">
             <v-avatar color="#ecf7ee" size="40">
                 <v-icon color="#41ab55" x-small>fas fa-shopping-cart</v-icon>
             </v-avatar>
@@ -34,8 +34,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
     name: 'NavbarView',
+    computed: {
+        ...mapState({
+            cartItemCount: state => state.cartItemCount
+        })
+    },
     methods: {
         addToHome() {
             this.$router.push('/')
